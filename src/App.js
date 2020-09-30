@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {customers, categories, items} from './data/mock_data'
+import ExistingCustomerForm from './components/ExistingCustomerForm'
+import NewCustomerForm from './components/NewCustomerForm'
 
 function App() {
+
+  const [customer, setCustomer] = useState("New Customer");
+
+  function setCustomerType(e)
+  {
+      setCustomer(e.target.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+      <div className="header">
+        <h1>Order Form</h1>
+      </div>
+      <br></br>
+      <div className="customer-type">
+        <input type="radio" name="customer" value="New Customer"  checked={customer==="New Customer"} onChange={(e)=>setCustomerType(e)} />
+        <label><b>New Customer</b></label>
+        <input  type="radio" name="customer" value="Existing Customer" checked={customer==="Existing Customer"} onChange={(e)=>setCustomerType(e)}/>
+        <label><b>Existing Customer</b></label>
+      </div>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <div className="form-container">
+        {customer==="Existing Customer" ? 
+          <ExistingCustomerForm customersList={customers} categoriesList={categories} itemsList={items} /> : 
+          <NewCustomerForm categoriesList={categories} itemsList={items} />
+        }
+      </div>
     </div>
+    </>
   );
 }
 
