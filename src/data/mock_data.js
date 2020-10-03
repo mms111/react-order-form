@@ -2,15 +2,12 @@ const customers = [
 
     {
         name: "Muhammad Mohsin Shaikh",
-        sex: "male",
     },
     {
         name: "Ali",
-        sex: "male"
     },
     {
         name: "Alexendra",
-        sex: "female"
     }
 ]
 

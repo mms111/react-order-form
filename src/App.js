@@ -1,20 +1,16 @@
 import React from 'react';
 import './App.css';
-import {customers, categories, items} from './data/mock_data'
-import CustomerSelection from './components/CustomerSelection'
+import Header from './components/Header';
+import FormBody from './components/FormBody';
 
 function App() {
 
- 
-
   return (
     <>
-    <div>
-      <div className="header">
-        <h1>Order Form</h1>
-      </div>
+    <div className="App">
+      <Header heading="Order Form" />
       <br></br>
-      <CustomerSelection customersList={customers} categoriesList={categories} itemsList={items}/>
+      <FormBody/>
     </div>
     </>
   );
