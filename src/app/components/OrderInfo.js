@@ -1,7 +1,10 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 
-function OrderInfo(props)
+function OrderInfo({addedItems})
 {
+    const totalAmount = useSelector(state => state.orderReducer.totalAmount)
+
     return(
         <>
             <div className="items-table">
@@ -12,16 +15,16 @@ function OrderInfo(props)
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
-                            {props.selectedItemList.map((selectedItem, index)=>(
+                            {addedItems.map((item, index)=>(
                                 <tr key={index}>
-                                    <td>{selectedItem.name}</td>
-                                    <td>{selectedItem.quantity}</td>
-                                    <td>{selectedItem.price * selectedItem.quantity}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.price}</td>
                                 </tr>
                             ))}
                         <tr>
                             <td colSpan="2"><b>Total</b></td>
-                            <td><b>{props.totalAmount}</b></td>
+                            <td><b>{totalAmount}</b></td>
                         </tr>
                     </tbody>
                 </table>      
