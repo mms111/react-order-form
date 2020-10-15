@@ -15,7 +15,7 @@ function Categories({categories})
     
     return(
         <>
-            <select id="category" value={category} onChange={(event) => handleEvent(event)}>
+            <select value={category}  onChange={(event) => handleEvent(event)}>
 
                 {
                     category==="" ? 

@@ -2,6 +2,7 @@ import orderTypes from '../actionTypes/orderTypes'
 import {customers} from '../../data/mock_data'
 
 const initialState = {
+    customerName: "",
     selectedCategory: "",
     selectedItem: {
         name: "",
@@ -16,6 +17,11 @@ export default function orderReducer(state=initialState, action) {
 
     switch(action.type)
     {
+        case orderTypes.SET_CUSTOMER_NAME:
+            return{
+                ...state,
+                customerName: action.payload
+            }
         case orderTypes.SET_CATEGORY:
             return {
                 ...state,
@@ -68,11 +74,11 @@ export default function orderReducer(state=initialState, action) {
             return initialState
         
         case orderTypes.PLACE_ORDER:
-            customers.push(
-                {
-                    name: action.payload
-                }
-            )
+            const existingCustomer = customers.find(customer => customer.name===state.customerName)
+            if(existingCustomer===undefined)
+            {
+                customers.push({name: state.customerName})
+            }
             return initialState
 
         default :

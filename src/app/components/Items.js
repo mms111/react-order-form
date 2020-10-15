@@ -39,7 +39,7 @@ function Items({items, category}) {
                     <option disabled>Select Item</option>
                 }
                 {selectedCategoryItems.map((item, index)=>
-                (<option key={index} value={item.name}>{item.name + " - Rs." + item.price}</option>
+                (<option key={index} value={item.name} >{item.name + " - Rs." + item.price}</option>
                 ))}
                 </optgroup>
             </select>

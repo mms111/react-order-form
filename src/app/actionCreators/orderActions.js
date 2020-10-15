@@ -1,5 +1,14 @@
 import orderTypes from '../actionTypes/orderTypes'
 
+const setCustomerName = (name) => {
+    return(
+        {
+            type: orderTypes.SET_CUSTOMER_NAME,
+            payload: name
+        }
+    )
+}
+
 const setCategory = (category) =>
 {
     return(
@@ -53,14 +62,13 @@ const resetOrder = () =>
     )
 }
 
-const placeOrder = (customerName) =>
+const placeOrder = () =>
 {
     return(
         {
             type: orderTypes.PLACE_ORDER,
-            payload: customerName
         }
     )
 }
 
-export {setCategory, setItem, resetItem, addItem, resetOrder, placeOrder}
+export {setCustomerName, setCategory, setItem, resetItem, addItem, resetOrder, placeOrder}
