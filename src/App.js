@@ -1,20 +1,24 @@
 import React from 'react';
 import './App.css';
-import Header from './app/components/Header';
-import FormBody from './app/components/FormBody';
+import HomePage from '../src/app/pages/homePage/homePage'
 import {Provider} from "react-redux"
 import store from './app/store'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import OrderPage from '../src/app/pages/orderPage/orderPage'
 
 function App() {
 
   return (
     <>
       <Provider store={store}>
-        <div className="App">
-          <Header heading="Order Form" />
-          <br></br>
-          <FormBody/>
-        </div>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route path="/" exact component={HomePage}></Route>
+              <Route path="/orderSlip" component={OrderPage}></Route>
+            </Switch>
+          </div>
+        </Router>
       </Provider>
     </>
   );

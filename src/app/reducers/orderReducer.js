@@ -34,7 +34,7 @@ export default function orderReducer(state=initialState, action) {
                 selectedItem: action.payload
             }
         
-        case orderTypes.RESEST_ITEM:
+        case orderTypes.RESET_ITEM:
 
             return {
                 ...state,
@@ -79,7 +79,7 @@ export default function orderReducer(state=initialState, action) {
             {
                 customers.push({name: state.customerName})
             }
-            return initialState
+            return state;
 
         default :
             return state;

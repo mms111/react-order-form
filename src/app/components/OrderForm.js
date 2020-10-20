@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import Menu from './Menu'
 import OrderInfo from './OrderInfo'
 import {setCustomerName, resetOrder, placeOrder} from '../actionCreators/orderActions'
+import { useHistory } from 'react-router-dom'
 
 function OrderForm()
 {
@@ -12,7 +13,7 @@ function OrderForm()
     const customer = useSelector(state => state.customerReducer.customer)
     const addedItems = useSelector(state => state.orderReducer.addedItems)
     const dispatch = useDispatch()
-    
+    const histroy = useHistory()
 
     const resetForm = (event) =>
     {
@@ -22,14 +23,13 @@ function OrderForm()
     const submitForm = (event) => 
     {
         event.preventDefault()
-        
+
         if(customerName==="")
         {
             return alert("Please select your name")
         }
-        
-        alert("Thanks " + customerName + ". Your order has been placed successfully")
         dispatch(placeOrder())
+        histroy.push('/orderSlip')      
     }
 
     return(
@@ -37,7 +37,6 @@ function OrderForm()
             <div className="form-container">
                 <div className="form">
                     <form  onSubmit={submitForm}>
-
                         {
                             customer==="EXISTING_CUSTOMER" ? 
                             <ExistingCustomers customersList={customers}/> :
@@ -70,7 +69,6 @@ function OrderForm()
                             <></>
                         }
                         
-
                     </form>
                 </div>
             </div>

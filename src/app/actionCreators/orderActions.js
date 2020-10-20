@@ -33,7 +33,7 @@ const resetItem = () =>
 {
     return(
         {
-            type: orderTypes.RESEST_ITEM,
+            type: orderTypes.RESET_ITEM,
             payload: {
                 name: "",
                 type: "",
